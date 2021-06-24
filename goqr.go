@@ -494,7 +494,7 @@ func groupData(sizBlock, sizeCorrBlock, countByteCorect int, byteBlock, corectBl
 	return
 }
 
-//Поисковые маячки
+//Рисование поисковых мояков
 func searchPoint(img *[][]byte) {
 	posx := []int{0, 0, len(*img) - 7}
 	posy := []int{0, len(*img) - 7, 0}
@@ -534,7 +534,7 @@ func searchPoint(img *[][]byte) {
 	}
 }
 
-//Полосы синхранизации
+//Рисование полос синхранизации
 func syncLine(img *[][]byte) {
 	f := true
 	for i := 8; i < len(*img)-8; i++ {
@@ -550,7 +550,7 @@ func syncLine(img *[][]byte) {
 	}
 }
 
-//Информация о версии и маске
+//Рисование информации о версии и маске
 func maskInfo(img *[][]byte, code int) {
 	var a, b int
 	mask := 0x4000
@@ -594,6 +594,7 @@ func maskInfo(img *[][]byte, code int) {
 	}
 }
 
+//Рисование кода версии
 func codeVer(img *[][]byte, version int) {
 	size := len(*img) - 1
 	vers := codeVersion[version]
@@ -612,6 +613,7 @@ func codeVer(img *[][]byte, version int) {
 	}
 }
 
+//Рисование якорей
 func anchor(img *[][]byte, version int) {
 	coordLisn := coordAnchor[version]
 	for i := range coordLisn {
@@ -634,6 +636,7 @@ func anchor(img *[][]byte, version int) {
 	}
 }
 
+//Рисование данных
 func write(img *[][]byte, data *[]int) {
 	var i int
 	var direct bool
@@ -705,6 +708,7 @@ func write(img *[][]byte, data *[]int) {
 	}
 }
 
+//Вывод модели изображения
 func paintImage(size, maxSizeImg int, dataImg *[][]byte, image2 image.Image) *image.CMYK {
 	var sizeImg, shift int
 	coeff := 1
@@ -747,6 +751,7 @@ func paintImage(size, maxSizeImg int, dataImg *[][]byte, image2 image.Image) *im
 	return image1
 }
 
+//Вывод модели гифки
 func paintGIF(size, maxSizeImg int, dataImg *[][]byte, image2 *gif.GIF) *gif.GIF {
 	image1 := &gif.GIF{
 		Delay:     image2.Delay,
